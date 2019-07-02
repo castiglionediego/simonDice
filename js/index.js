@@ -28,6 +28,7 @@ class Juego {
 
   siguienteNivel(){
       this.iluminarSecuencia()
+      this.agregarEventosClick()
   }
 
   transformarNumeroAColor(numero){
@@ -52,14 +53,24 @@ class Juego {
   }
 
   iluminarColor(color){
-      console.log(`iluminarColor: ${color}`)
       this.colores[color].classList.add('light')
-      console.log(`Clases del color: ${this.colores[color].classList}`)
       setTimeout( () => this.apagarColor(color), 350)
   }
 
   apagarColor(color){
     this.colores[color].classList.remove('light')
+  }
+
+  agregarEventosClick(){
+    this.colores.celeste.addEventListener('click', this.elegirColor.bind(this))
+    this.colores.naranja.addEventListener('click', this.elegirColor.bind(this))
+    this.colores.violeta.addEventListener('click', this.elegirColor.bind(this))
+    this.colores.verde.addEventListener('click', this.elegirColor.bind(this))
+  }
+
+  elegirColor(ev){
+      console.log(ev)
+      console.log(this)
   }
 
 }
